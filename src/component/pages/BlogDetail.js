@@ -1,15 +1,15 @@
 import React from "react";
-import BreadCrumb from "./BreadCrumb";
+import BreadCrumb from "../common/BreadCrumb";
 import { Link } from "react-router-dom";
 
-import blogsingle from "../img/blog/single.png";
-import blogsingle2 from "../img/blog/single-2.png";
-import blogsingle3 from "../img/blog/single-3.png";
-import comment from "../img/blog/comment.png";
-import widget1 from "../img/widget/1.png";
-import widget2 from "../img/widget/2.png";
-import widget3 from "../img/widget/3.png";
-import widget4 from "../img/widget/4.png";
+import blogsingle from "../../img/blog/single.png";
+import blogsingle2 from "../../img/blog/single-2.png";
+import blogsingle3 from "../../img/blog/single-3.png";
+import comment from "../../img/blog/comment.png";
+import widget1 from "../../img/widget/1.png";
+import widget2 from "../../img/widget/2.png";
+import widget3 from "../../img/widget/3.png";
+import widget4 from "../../img/widget/4.png";
 
 const BlogDetail = () => {
   return (

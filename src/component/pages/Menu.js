@@ -2,25 +2,25 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-import category1 from "../img/category/1.png";
-import category2 from "../img/category/2.png";
-import category3 from "../img/category/3.png";
-import category4 from "../img/category/4.png";
-import category5 from "../img/category/5.png";
-import category6 from "../img/category/6.png";
+import category1 from "../../img/category/1.png";
+import category2 from "../../img/category/2.png";
+import category3 from "../../img/category/3.png";
+import category4 from "../../img/category/4.png";
+import category5 from "../../img/category/5.png";
+import category6 from "../../img/category/6.png";
 
-import pizza1 from "../img/product/pizza/1.png";
-import pizza2 from "../img/product/pizza/2.png";
-import pizza3 from "../img/product/pizza/3.png";
-import pizza4 from "../img/product/pizza/4.png";
-import pizza5 from "../img/product/pizza/5.png";
-import pizza6 from "../img/product/pizza/6.png";
+import pizza1 from "../../img/product/pizza/1.png";
+import pizza2 from "../../img/product/pizza/2.png";
+import pizza3 from "../../img/product/pizza/3.png";
+import pizza4 from "../../img/product/pizza/4.png";
+import pizza5 from "../../img/product/pizza/5.png";
+import pizza6 from "../../img/product/pizza/6.png";
 
-import burger1 from "../img/product/burger/1.png";
-import burger2 from "../img/product/burger/2.png";
+import burger1 from "../../img/product/burger/1.png";
+import burger2 from "../../img/product/burger/2.png";
 
-import ad from "../img/ad.png";
-import BreadCrumb from "./BreadCrumb";
+import ad from "../../img/ad.png";
+import BreadCrumb from "../common/BreadCrumb";
 
 const Menu = () => {
   return (

@@ -1,4 +1,4 @@
-// import category1 from "../../img/category/1.png";
+import category1 from "../../img/category/1.png";
 //import category2 from "../../img/category/2.png";
 import category3 from "../../img/category/3.png";
 import category4 from "../../img/category/4.png";
@@ -13,14 +13,14 @@ import category6 from "../../img/category/6.png";
 // import product06 from "../../img/product/06.png";
 // import product07 from "../../img/product/07.png";
 // import product08 from "../../img/product/08.png";
-const ProdctData = [
-  // {
-  //     id:"pills-ramen-tab",
-  //     target:"#pills-ramen",
-  //     controls:"pills-ramen",
-  //     img:{category1},
-  //     name:"Ramen"
-  // },
+const ProductData = [
+  {
+    id: "pills-ramen-tab",
+    target: "#pills-ramen",
+    controls: "pills-ramen",
+    img: { category1 },
+    name: "Ramen",
+  },
   {
     id: "pills-pizza-tab",
     target: "#pills-pizza",
@@ -58,4 +58,4 @@ const ProdctData = [
   },
 ];
 
-export default ProdctData;
+export default ProductData;

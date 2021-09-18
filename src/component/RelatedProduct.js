@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import pizza1 from "../img/product/pizza/1.png";
 import pizza2 from "../img/product/pizza/2.png";
@@ -20,13 +21,13 @@ const RelatedProduct = () => {
                   <div className="single-item-wrap">
                     <div className="thumb">
                       <img src={pizza1} alt="img" />
-                      <a className="fav-btn" href="#">
+                      <Link className="fav-btn" to="#">
                         <i className="ri-heart-line"></i>
-                      </a>
+                      </Link>
                     </div>
                     <div className="wrap-details">
                       <h5>
-                        <a href="single-product.html">Margherita Pizza</a>
+                        <Link to="/shop-detail">Margherita Pizza</Link>
                       </h5>
                       <div className="wrap-footer">
                         <div className="rating">
@@ -44,12 +45,9 @@ const RelatedProduct = () => {
                       </div>
                     </div>
                     <div className="btn-area">
-                      <a
-                        className="btn btn-secondary"
-                        href="single-product.html"
-                      >
+                      <Link className="btn btn-secondary" to="/shop-detail">
                         CHOOSE OPTIONS
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -57,15 +55,13 @@ const RelatedProduct = () => {
                   <div className="single-item-wrap">
                     <div className="thumb">
                       <img src={pizza2} alt="img" />
-                      <a className="fav-btn" href="#">
+                      <Link className="fav-btn" to="#">
                         <i className="ri-heart-line"></i>
-                      </a>
+                      </Link>
                     </div>
                     <div className="wrap-details">
                       <h5>
-                        <a href="single-product.html">
-                          Maxican Pizza Test Better
-                        </a>
+                        <Link to="/shop-detail">Maxican Pizza Test Better</Link>
                       </h5>
                       <div className="wrap-footer">
                         <div className="rating">
@@ -82,12 +78,9 @@ const RelatedProduct = () => {
                         <h6 className="price">$29.00</h6>
                       </div>
                       <div className="btn-area">
-                        <a
-                          className="btn btn-secondary"
-                          href="single-product.html"
-                        >
+                        <Link className="btn btn-secondary" to="/shop-detail">
                           CHOOSE OPTIONS
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -96,13 +89,13 @@ const RelatedProduct = () => {
                   <div className="single-item-wrap">
                     <div className="thumb">
                       <img src={burger1} alt="img" />
-                      <a className="fav-btn" href="#">
+                      <Link className="fav-btn" to="#">
                         <i className="ri-heart-line"></i>
-                      </a>
+                      </Link>
                     </div>
                     <div className="wrap-details">
                       <h5>
-                        <a href="single-product.html">Patty Buns Burgers</a>
+                        <Link to="/shop-detail">Patty Buns Burgers</Link>
                       </h5>
                       <div className="wrap-footer">
                         <div className="rating">
@@ -120,12 +113,9 @@ const RelatedProduct = () => {
                       </div>
                     </div>
                     <div className="btn-area">
-                      <a
-                        className="btn btn-secondary"
-                        href="single-product.html"
-                      >
+                      <Link className="btn btn-secondary" to="/shop-detail">
                         CHOOSE OPTIONS
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

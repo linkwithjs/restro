@@ -1,12 +1,12 @@
-import React from "react";
+//import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import category1 from "../../img/category/1.png";
-import category2 from "../../img/category/2.png";
-import category3 from "../../img/category/3.png";
-import category4 from "../../img/category/4.png";
-import category5 from "../../img/category/5.png";
-import category6 from "../../img/category/6.png";
+// import category2 from "../../img/category/2.png";
+// import category3 from "../../img/category/3.png";
+// import category4 from "../../img/category/4.png";
+// import category5 from "../../img/category/5.png";
+// import category6 from "../../img/category/6.png";
 
 import product01 from "../../img/product/01.png";
 import product02 from "../../img/product/02.png";
@@ -17,7 +17,10 @@ import product06 from "../../img/product/06.png";
 import product07 from "../../img/product/07.png";
 import product08 from "../../img/product/08.png";
 
+//product json data
 import ProductData from "./ProductData";
+import Items from "./Items";
+import { addItem } from "../common/AddToCart";
 
 const Product = () => {
   return (
@@ -36,7 +39,7 @@ const Product = () => {
                 id="pills-tab"
                 role="tablist"
               >
-                <li className="nav-item" role="presentation">
+                {/* <li className="nav-item" role="presentation">
                   <button
                     className="nav-link active"
                     id="pills-ramen-tab"
@@ -50,31 +53,36 @@ const Product = () => {
                     <img src={category1} alt="img" />
                     Ramen
                   </button>
-                </li>
+                </li> */}
 
-                {/* {ProductData.map((curElem) => {
+                {ProductData.map((curElem, index) => {
+                  const { id, target, controls, img, name } = curElem;
                   return (
-                    <>
-                      <li className="nav-item" role="presentation">
-                        <button
-                          className="nav-link"
-                          id={curElem.id}
-                          data-bs-toggle="pill"
-                          data-bs-target={curElem.target}
-                          type="button"
-                          role="tab"
-                          aria-controls={curElem.controls}
-                          aria-selected="false"
-                        >
-                          <img src={category2} alt="img" />
-                          {curElem.name}
-                        </button>
-                      </li>
-                    </>
+                    <li className="nav-item" role="presentation" key={index}>
+                      <button
+                        className={
+                          id === "pills-ramen-tab"
+                            ? "nav-link active"
+                            : "nav-link"
+                        }
+                        id={id}
+                        data-bs-toggle="pill"
+                        data-bs-target={target}
+                        type="button"
+                        role="tab"
+                        aria-controls={controls}
+                        aria-selected={
+                          id === "pills-ramen-tab" ? "true" : "false"
+                        }
+                      >
+                        <img src={category1} alt="img" />
+                        {name}
+                      </button>
+                    </li>
                   );
-                })} */}
+                })}
 
-                <li className="nav-item" role="presentation">
+                {/* <li className="nav-item" role="presentation">
                   <button
                     className="nav-link"
                     id="pills-pizza-tab"
@@ -148,7 +156,7 @@ const Product = () => {
                     <img src={category6} alt="img" />
                     Soft drinks
                   </button>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -160,40 +168,55 @@ const Product = () => {
               aria-labelledby="pills-ramen-tab"
             >
               <div className="row justify-content-center">
-                <div className="col-xl-3 col-lg-4 col-md-6">
-                  <div className="single-item-wrap style-2">
-                    <div className="thumb">
-                      <img src={product01} alt="img" />
-                      <Link className="fav-btn" to="#">
-                        <i className="ri-heart-fill"></i>
-                      </Link>
-                    </div>
-                    <div className="wrap-details">
-                      <h5>
-                        <Link to="/shop-detail">Double Burger</Link>
-                      </h5>
-                      <div className="wrap-footer">
-                        <div className="rating">
-                          4.9
-                          <span className="rating-inner">
-                            <i className="ri-star-fill ps-0"></i>
-                            <i className="ri-star-fill"></i>
-                            <i className="ri-star-fill"></i>
-                            <i className="ri-star-fill"></i>
-                            <i className="ri-star-half-line pe-0"></i>
-                          </span>
-                          (200)
+                {Items.map((curElem, index) => {
+                  const { id, name, rating, price, quantity } = curElem;
+                  return (
+                    <div className="col-xl-3 col-lg-4 col-md-6" key={index}>
+                      <div className="single-item-wrap style-2">
+                        <div className="thumb">
+                          <img src={product01} alt="img" />
+                          <Link className="fav-btn" to="#">
+                            <i className="ri-heart-fill"></i>
+                          </Link>
+                        </div>
+                        <div className="wrap-details">
+                          <h5>
+                            <Link to="/shop-detail">{name}</Link>
+                          </h5>
+                          <div className="wrap-footer">
+                            <div className="rating">
+                              {rating}
+                              <span className="rating-inner">
+                                <i className="ri-star-fill ps-0"></i>
+                                <i className="ri-star-fill"></i>
+                                <i className="ri-star-fill"></i>
+                                <i className="ri-star-fill"></i>
+                                <i className="ri-star-half-line pe-0"></i>
+                              </span>
+                              (200)
+                            </div>
+                          </div>
+                          <div className="btn-area">
+                            <h6 className="price">${price}</h6>
+                            {/* <Link className="btn btn-secondary" to="/shop-details">
+                          Add to cart <i className="ri-add-line"></i>
+                        </Link> */}
+                            <button
+                              className="btn btn-secondary"
+                              onClick={() => {
+                                addItem(id, name, price, quantity);
+                              }}
+                            >
+                              Add to cart <i className="ri-add-line"></i>
+                            </button>
+                          </div>
                         </div>
                       </div>
-                      <div className="btn-area">
-                        <h6 className="price">$17.00</h6>
-                        <Link className="btn btn-secondary" to="/shop-details">
-                          Add to cart <i className="ri-add-line"></i>
-                        </Link>
-                      </div>
                     </div>
-                  </div>
-                </div>
+                  );
+                })}
+
+                {/* 
                 <div className="col-xl-3 col-lg-4 col-md-6">
                   <div className="single-item-wrap style-2">
                     <div className="thumb">
@@ -227,7 +250,8 @@ const Product = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
+                {/* 
                 <div className="col-xl-3 col-lg-4 col-md-6">
                   <div className="single-item-wrap style-2">
                     <div className="thumb">
@@ -238,7 +262,7 @@ const Product = () => {
                     </div>
                     <div className="wrap-details">
                       <h5>
-                        <Link to="/sho-detail">Cheese Momos</Link>
+                        <Link to="/shop-detail">Cheese Momos</Link>
                       </h5>
                       <div className="wrap-footer">
                         <div className="rating">
@@ -261,7 +285,8 @@ const Product = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
+                {/* 
                 <div className="col-xl-3 col-lg-4 col-md-6">
                   <div className="single-item-wrap style-2">
                     <div className="thumb">
@@ -295,8 +320,8 @@ const Product = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6">
+                </div> */}
+                {/* <div className="col-xl-3 col-lg-4 col-md-6">
                   <div className="single-item-wrap style-2">
                     <div className="thumb">
                       <img src={product05} alt="img" />
@@ -329,8 +354,8 @@ const Product = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6">
+                </div> */}
+                {/* <div className="col-xl-3 col-lg-4 col-md-6">
                   <div className="single-item-wrap style-2">
                     <div className="thumb">
                       <img src={product06} alt="img" />
@@ -363,8 +388,8 @@ const Product = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6">
+                </div> */}
+                {/* <div className="col-xl-3 col-lg-4 col-md-6">
                   <div className="single-item-wrap style-2">
                     <div className="thumb">
                       <img src={product07} alt="img" />
@@ -397,8 +422,8 @@ const Product = () => {
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-xl-3 col-lg-4 col-md-6">
+                </div> */}
+                {/* <div className="col-xl-3 col-lg-4 col-md-6">
                   <div className="single-item-wrap style-2">
                     <div className="thumb">
                       <img src={product08} alt="img" />
@@ -431,7 +456,7 @@ const Product = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div

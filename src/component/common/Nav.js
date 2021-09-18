@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../img/logo.png";
-import shoppingcart from "../img/shopping-cart.png";
-import phone from "../img/phone.png";
+// import logo from "../../img/logo.png";
+import logo from "../../img/logo.png";
+import shoppingcart from "../../img/shopping-cart.png";
+import phone from "../../img/phone.png";
+import data from "../pages/ContactData";
+import { itemCount, totalAmount } from "./AddToCart";
 
 const Nav = () => {
   return (
@@ -54,7 +57,7 @@ const Nav = () => {
             </div>
             <div className="logo">
               <Link className="main-logo" to="/homepage">
-                <img src={logo} alt="img" />
+                <img src={logo} alt="img" height="40px" />
               </Link>
             </div>
             <div className="collapse navbar-collapse" id="themefie_main_menu">
@@ -100,6 +103,15 @@ const Nav = () => {
                     <li>
                       <Link to="/checkout">Checkout</Link>
                     </li>
+                    <li>
+                      <Link to="/sign-up">Sign Up</Link>
+                    </li>
+                    <li>
+                      <Link to="/login">Login</Link>
+                    </li>
+                    <li>
+                      <Link to="/gallery">Gallery</Link>
+                    </li>
                   </ul>
                 </li>
                 <li>
@@ -112,11 +124,6 @@ const Nav = () => {
             </div>
             <div className="nav-right-part nav-right-part-mobile">
               <ul>
-                <li>
-                  <Link className="search" to="#">
-                    <i className="ri-search-line"></i>
-                  </Link>
-                </li>
                 <li className="phone-contact d-md-block d-none">
                   <i className="ri-phone-fill float-start"></i>
                   +997 509 153 849
@@ -134,13 +141,13 @@ const Nav = () => {
                 <li className="menu-cart">
                   <Link to="/cart">
                     <img src={shoppingcart} alt="icon" />
-                    <span>1</span>
+                    <span>{itemCount()}</span>
                   </Link>
                 </li>
-                <li>49.50 $</li>
+                <li>{totalAmount()}$</li>
                 <li className="phone-contact">
                   <img className="me-2" src={phone} alt="icon" />
-                  +997 509 153 849
+                  {data.phone}
                 </li>
               </ul>
             </div>

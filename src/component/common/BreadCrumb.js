@@ -1,7 +1,7 @@
 import React from "react";
 
-import shape1 from "../img/banner/shape-1.png";
-import shape2 from "../img/banner/shape-2.png";
+import shape1 from "../../img/banner/shape-1.png";
+import shape2 from "../../img/banner/shape-2.png";
 
 const BreadCrumb = ({ name, description }) => {
   return (

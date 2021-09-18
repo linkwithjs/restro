@@ -1,9 +1,15 @@
-import React from "react";
-import BreadCrumb from "./BreadCrumb";
+import React, { useState } from "react";
+import BreadCrumb from "./common/BreadCrumb";
 import { Link } from "react-router-dom";
 import widget01 from "../img/widget/01.png";
 
+import { total, list, quantity, remove } from "cart-localstorage";
+
 const Cart = () => {
+  const cartItems = list();
+
+  const [amount, setAmount] = useState(total());
+
   return (
     <>
       <BreadCrumb name="Cart Page" description="Check Your Box" />
@@ -26,15 +32,91 @@ const Cart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    {cartItems.map((curElem, index) => {
+                      return (
+                        <tr key={index}>
+                          <td className="table-close-btn">
+                            <Link to="#">
+                              <i
+                                className="ri-close-line"
+                                onClick={() => {
+                                  remove(curElem.id);
+                                  setAmount(total());
+                                }}
+                              ></i>
+                            </Link>
+                          </td>
+
+                          <th scope="row">
+                            <img src={widget01} alt="img" />
+                          </th>
+
+                          <td colSpan="2" className="item-name">
+                            <div className="details">
+                              <h5>{curElem.name}</h5>
+                              <ul>
+                                <li>
+                                  <span>Select Size: </span>Large
+                                </li>
+                                <li>
+                                  <span>Select Crust: </span>Double Crust
+                                </li>
+                              </ul>
+                            </div>
+                          </td>
+
+                          <td>${curElem.price}</td>
+
+                          <td className="table-quantity">
+                            <form>
+                              <div className="quantity buttons_added">
+                                <input
+                                  type="button"
+                                  value="-"
+                                  className="minus"
+                                  onClick={() => {
+                                    if (curElem.quantity > 1) {
+                                      quantity(curElem.id, -1);
+                                      setAmount(total());
+                                    }
+                                  }}
+                                />
+                                <input
+                                  type="number"
+                                  className="input-text qty text"
+                                  step="1"
+                                  min="1"
+                                  max="10000"
+                                  name="quantity"
+                                  defaultValue={curElem.quantity}
+                                />
+                                <input
+                                  type="button"
+                                  value="+"
+                                  className="plus"
+                                  onClick={() => {
+                                    quantity(curElem.id, +1);
+                                    setAmount(total());
+                                  }}
+                                />
+                              </div>
+                            </form>
+                          </td>
+                          <td>${curElem.price * curElem.quantity}</td>
+                        </tr>
+                      );
+                    })}
+                    {/* <tr>
                       <td className="table-close-btn">
                         <Link to="#">
                           <i className="ri-close-line"></i>
                         </Link>
                       </td>
+
                       <th scope="row">
                         <img src={widget01} alt="img" />
                       </th>
+
                       <td colSpan="2" className="item-name">
                         <div className="details">
                           <h5>All Season Gulliver Pizza</h5>
@@ -48,7 +130,9 @@ const Cart = () => {
                           </ul>
                         </div>
                       </td>
+
                       <td>$50.00</td>
+
                       <td className="table-quantity">
                         <form>
                           <div className="quantity buttons_added">
@@ -67,7 +151,7 @@ const Cart = () => {
                         </form>
                       </td>
                       <td>$40.00</td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table>
               </div>
@@ -105,10 +189,10 @@ const Cart = () => {
                   <h5>Cart totals</h5>
                   <ul>
                     <li>
-                      Subtotal<span>$50.00</span>
+                      Subtotal<span>${amount}</span>
                     </li>
                     <li className="total">
-                      Total<span>$50.00</span>
+                      Total<span>${amount}</span>
                     </li>
                   </ul>
                 </div>

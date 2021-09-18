@@ -1,9 +1,11 @@
 import React from "react";
-import BreadCrumb from "./BreadCrumb";
+import Iframe from "react-iframe";
+import BreadCrumb from "../common/BreadCrumb";
+import data from "./ContactData";
 
-import location from "../img/location.png";
-import envelope from "../img/envelope.png";
-import phone from "../img/phone1.png";
+import location from "../../img/location.png";
+import envelope from "../../img/envelope.png";
+import phone from "../../img/phone1.png";
 
 const Contact = () => {
   return (
@@ -17,24 +19,18 @@ const Contact = () => {
               <ul className="contact_info_list">
                 <li className="single-info-item">
                   <img src={location} alt="icon" />
-                  <div className="details">
-                    4920 Trails End Road Ft United States, FL 33311
-                  </div>
+                  <div className="details">{data.location}</div>
                 </li>
                 <li className="single-info-item">
                   <img src={envelope} alt="icon" />
-                  <div className="details">ordernow@foodka.com</div>
+                  <div className="details">{data.email}</div>
                 </li>
                 <li className="single-info-item">
                   <img src={phone} alt="icon" />
-                  <div className="details">+997 509 153 849</div>
+                  <div className="details">{data.phone}</div>
                 </li>
               </ul>
-              <p>
-                We’re an award-winning creative design studio with a small team
-                and big ideas. We pour passion into projects big and small,
-                providing our expert clients with solutions.
-              </p>
+              <p>{data.description}</p>
             </div>
             <div className="col-lg-6">
               <form className="default-form-wrap border-0 p-0 mt-4 mt-lg-0">
@@ -75,14 +71,15 @@ const Contact = () => {
 
       <div className="location-map">
         <div className="responsive-map">
-          <iframe
+          <Iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7736.809349608943!2d90.34779195789959!3d23.772761841203913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1618491766114!5m2!1sen!2sbd"
             width="600"
             height="450"
+            id="myid"
             style={{ border: "0" }}
-            allowfullscreen=""
+            allowFullScreen=""
             loading="lazy"
-          ></iframe>
+          />
         </div>
       </div>
     </>

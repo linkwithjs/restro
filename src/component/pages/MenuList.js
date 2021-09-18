@@ -1,8 +1,10 @@
 import React from "react";
-import BreadCrumb from "./BreadCrumb";
+import BreadCrumb from "../common/BreadCrumb";
 import { Link } from "react-router-dom";
 
-import burger1 from "../img/product/burger/1.png";
+import burger1 from "../../img/product/burger/1.png";
+import MenuListData from "./MenuListData";
+import { addItem } from "../common/AddToCart";
 
 const MenuList = () => {
   return (
@@ -24,6 +26,64 @@ const MenuList = () => {
             </div>
           </div>
           <div className="row justify-content-center">
+            {MenuListData.map((curElem, index) => {
+              const { id, name, description, price, quantity } = curElem;
+              return (
+                <div className="col-lg-6" key="index">
+                  <div className="single-item-wrap style-2">
+                    <div className="media">
+                      <div className="thumb">
+                        <img src={burger1} alt="img" />
+                      </div>
+                      <div className="wrap-details">
+                        <h5>
+                          <Link to="/shop-detail">{name}</Link>
+                        </h5>
+                        <p>{description}</p>
+                        <div className="wrap-footer">
+                          <h6 className="price">${price}</h6>
+                          <button
+                            type="submit"
+                            className="btn btn-secondary"
+                            onClick={() => {
+                              addItem(id, name, price, quantity);
+                            }}
+                          >
+                            ADD TO CART
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* <div className="col-lg-6">
+              <div className="single-item-wrap style-2">
+                <div className="media">
+                  <div className="thumb">
+                    <img src={burger1} alt="img" />
+                  </div>
+                  <div className="wrap-details">
+                    <h5>
+                      <Link to="/shop-detail">All Season Gulliver Pizza</Link>
+                    </h5>
+                    <p>
+                      Pizza is a savory dish of Italian origin consisting of a
+                      usually round, flattened base of leavened.
+                    </p>
+                    <div className="wrap-footer">
+                      <h6 className="price">$17.00</h6>
+                      <button type="submit" className="btn btn-secondary">
+                        ADD TO CART
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> */}
+            {/* 
             <div className="col-lg-6">
               <div className="single-item-wrap style-2">
                 <div className="media">
@@ -47,32 +107,8 @@ const MenuList = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="single-item-wrap style-2">
-                <div className="media">
-                  <div className="thumb">
-                    <img src={burger1} alt="img" />
-                  </div>
-                  <div className="wrap-details">
-                    <h5>
-                      <Link to="/shop-detail">All Season Gulliver Pizza</Link>
-                    </h5>
-                    <p>
-                      Pizza is a savory dish of Italian origin consisting of a
-                      usually round, flattened base of leavened.
-                    </p>
-                    <div className="wrap-footer">
-                      <h6 className="price">$17.00</h6>
-                      <button type="submit" className="btn btn-secondary">
-                        ADD TO CART
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-6">
+            </div> */}
+            {/* <div className="col-lg-6">
               <div className="single-item-wrap style-2">
                 <div className="media">
                   <div className="thumb">
@@ -215,7 +251,7 @@ const MenuList = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div class="col-12">
               <nav>
                 <ul class="pagination">

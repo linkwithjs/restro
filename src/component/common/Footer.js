@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import data from "../pages/ContactData";
 
-import logo from "../img/logo1.png";
-import location from "../img/location.png";
-import envelope from "../img/envelope.png";
-import phone from "../img/phone1.png";
-import insta1 from "../img/instagram/1.png";
-import insta2 from "../img/instagram/2.png";
-import insta3 from "../img/instagram/3.png";
-import insta4 from "../img/instagram/4.png";
-import insta5 from "../img/instagram/5.png";
-import insta6 from "../img/instagram/6.png";
+import logo from "../../img/logo1.png";
+import location from "../../img/location.png";
+import envelope from "../../img/envelope.png";
+import phone from "../../img/phone1.png";
+import insta1 from "../../img/instagram/1.png";
+import insta2 from "../../img/instagram/2.png";
+import insta3 from "../../img/instagram/3.png";
+import insta4 from "../../img/instagram/4.png";
+import insta5 from "../../img/instagram/5.png";
+import insta6 from "../../img/instagram/6.png";
 
 const Footer = () => {
   return (
@@ -28,17 +29,15 @@ const Footer = () => {
                   <ul className="contact_info_list">
                     <li className="single-info-item">
                       <img src={location} alt="icon" />
-                      <div className="details">
-                        4920 Trails End Road Ft United States, FL 33311
-                      </div>
+                      <div className="details">{data.location}</div>
                     </li>
                     <li className="single-info-item">
                       <img src={envelope} alt="icon" />
-                      <div className="details">ordernow@foodka.com</div>
+                      <div className="details">{data.email}</div>
                     </li>
                     <li className="single-info-item">
                       <img src={phone} alt="icon" />
-                      <div className="details">+997 509 153 849</div>
+                      <div className="details">{data.phone}</div>
                     </li>
                   </ul>
                 </div>

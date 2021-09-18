@@ -25,7 +25,7 @@ import widget02 from "../img/widget/02.png";
 import widget04 from "../img/widget/04.png";
 
 import ad from "../img/ad.png";
-import BreadCrumb from "./BreadCrumb";
+import BreadCrumb from "./common/BreadCrumb";
 
 const Shop = () => {
   return (
@@ -333,7 +333,7 @@ const Shop = () => {
                 <div className="widget widget_search">
                   <form className="search-form">
                     <div className="form-group">
-                      <input type="text" placeholder="Search your itmes" />
+                      <input type="text" placeholder="Search your items" />
                     </div>
                     <button className="submit-btn" type="submit">
                       <i className="ri-search-line"></i>

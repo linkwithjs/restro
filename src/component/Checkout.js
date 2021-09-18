@@ -1,5 +1,5 @@
 import React from "react";
-import BreadCrumb from "./BreadCrumb";
+import BreadCrumb from "./common/BreadCrumb";
 import { Link } from "react-router-dom";
 
 import widget01 from "../img/widget/01.png";
