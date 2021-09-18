@@ -62,16 +62,8 @@ const Nav = () => {
             </div>
             <div className="collapse navbar-collapse" id="themefie_main_menu">
               <ul className="navbar-nav menu-open">
-                <li className="current-menu-item menu-item-has-children">
-                  <Link to="home-1.html">HOME</Link>
-                  <ul className="sub-menu ps-0">
-                    <li>
-                      <Link to="/homepage">Home 01</Link>
-                    </li>
-                    <li>
-                      <Link to="/homepage">Home 02</Link>
-                    </li>
-                  </ul>
+                <li className="current-menu-item">
+                  <Link to="/">HOME</Link>
                 </li>
                 <li className="current-menu-item menu-item-has-children">
                   <Link to="#">PAGES</Link>
@@ -133,7 +125,6 @@ const Nav = () => {
                     CART <span>1</span>
                   </Link>
                 </li>
-                <li>49.50 $</li>
               </ul>
             </div>
             <div className="nav-right-part nav-right-part-desktop">

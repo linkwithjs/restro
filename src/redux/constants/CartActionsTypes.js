@@ -1,0 +1,7 @@
+const CartActionTypes = {
+  GET_CARTITEM: "GET_CARTITEM",
+  GET_CARTITEM_SUCCESS: "GET_CARTITEM_SUCCESS",
+  GET_CARTITEM_FAILURE: "GET_CARTITEM_FAILURE",
+};
+
+export default CartActionTypes;

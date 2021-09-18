@@ -2,23 +2,23 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
 // import NavBar from "./component/common/NavBar";
-import Nav from "./component/common/Nav";
-import Footer from "./component/common/Footer";
-import HomePage from "./component/HomePage";
-import About from "./component/pages/About";
-import Contact from "./component/pages/Contact";
-import Blog from "./component/pages/Blog";
-import BlogDetail from "./component/pages/BlogDetail";
-import Menu from "./component/pages/Menu";
-import MenuList from "./component/pages/MenuList";
-import Shop from "./component/Shop";
+import Nav from "./components/common/Nav";
+import Footer from "./components/common/Footer";
+import Home from "./pages/Home";
+import About from "./components/pages/About";
+import Contact from "./components/pages/Contact";
+import Blog from "./components/pages/Blog";
+import BlogDetail from "./components/pages/BlogDetail";
+import Menu from "./components/pages/Menu";
+import MenuList from "./components/pages/MenuList";
+import Shop from "./components/Shop";
 //import ShopDetail from "./component/ShopDetail";
-import Cart from "./component/Cart";
-import Checkout from "./component/Checkout";
-import ProductDetail from "./component/ProductDetails";
-import SignUp from "./component/SignUp";
-import Login from "./component/common/Login";
-import Gallery from "./component/pages/Gallery";
+import Cart from "./pages/Cart";
+import Checkout from "./components/Checkout";
+import ProductDetail from "./components/ProductDetails";
+import SignUp from "./components/SignUp";
+import Login from "./components/common/Login";
+import Gallery from "./components/pages/Gallery";
 // React lighbox for gallery
 import SimpleReactLightbox from "simple-react-lightbox";
 
@@ -29,7 +29,7 @@ function App() {
         {/* <NavBar /> */}
         <Nav />
         <Switch>
-          <Route exact path="/homepage" component={HomePage} />
+          <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/blog" component={Blog} />
@@ -46,7 +46,7 @@ function App() {
           <SimpleReactLightbox>
             <Route exact path="/gallery" component={Gallery} />
           </SimpleReactLightbox>
-          <Route component={HomePage} />
+          <Route component={Home} />
         </Switch>
         <Footer />
       </BrowserRouter>
