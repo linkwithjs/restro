@@ -1,17 +1,47 @@
 import CartActionsTypes from "./../constants/CartActionsTypes";
-
-const addToCart = (product) => {};
-const removeFromCart = (product) => {};
+import { list } from "cart-localstorage";
+import toastify from "./../../utils/toastify";
+import { addItem, itemCount } from "./../../components/common/AddToCart";
+const addToCart = (product) => (dispatch) => {
+  const { id, name, price, quantity } = product;
+  addItem(id, name, price, quantity);
+  toastify("Product Added To Cart");
+  dispatch({
+    type: CartActionsTypes.ADD_CARTITEM,
+    payload: true,
+  });
+};
+// const removeFromCart = (product) => {};
 const getCart = () => (dispatch) => {
   dispatch({ type: CartActionsTypes.GET_CARTITEM, payload: true });
-  setTimeout(() => {
-    var cartItems = localStorage.getItem("__cart");
-    dispatch({
-      type: CartActionsTypes.GET_CARTITEM_SUCCESS,
-      payload: cartItems,
-    });
-  }, 5000);
+  const cartItems = list();
+  dispatch({
+    type: CartActionsTypes.GET_CARTITEM_SUCCESS,
+    payload: cartItems,
+  });
+  // setTimeout(() => {
+  //   dispatch({
+  //     type: CartActionsTypes.GET_CARTITEM_SUCCESS,
+  //     payload: cartItems,
+  //   });
+  // }, 2000);
 };
+
+const countCartItem = () => (dispatch) => {
+  dispatch({ type: CartActionsTypes.COUNT_CARTITEM, payload: true });
+  const countItemsCart = itemCount();
+  dispatch({
+    type: CartActionsTypes.GET_CARTITEM_SUCCESS,
+    payload: countItemsCart,
+  });
+  // setTimeout(() => {
+  //   dispatch({
+  //     type: CartActionsTypes.GET_CARTITEM_SUCCESS,
+  //     payload: cartItems,
+  //   });
+  // }, 2000);
+};
+
 // const getUsers = (params) => (dispatch) => {
 //   dispatch({ type: UserActionsTypes.GET_USER, payload: true });
 //   axiosInstance
@@ -40,3 +70,4 @@ const getCart = () => (dispatch) => {
 //   addUser,
 // };
 export default getCart;
+export { addToCart, countCartItem };

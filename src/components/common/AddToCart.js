@@ -1,4 +1,5 @@
-import { add, list, total } from "cart-localstorage";
+import { add, list, remove, total } from "cart-localstorage";
+import toastify from "./../../utils/toastify";
 
 // function to add cart in localStorage
 const addItem = (id, name, price, quantity) => {
@@ -10,8 +11,6 @@ const addItem = (id, name, price, quantity) => {
 
   // add to localStorage
   add(cartdata, quantity);
-
-  alert("Cart added successfully.");
 };
 
 // function for cart item count
@@ -27,4 +26,11 @@ const totalAmount = () => {
   return total();
 };
 
-export { addItem, itemCount, totalAmount };
+// function to remove cart item
+
+const removeItem = (id) => {
+  remove(id);
+  toastify("Product removed successfully");
+};
+
+export { addItem, itemCount, totalAmount, removeItem };

@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 // import logo from "../../img/logo.png";
 import logo from "../../img/logo.png";
 import shoppingcart from "../../img/shopping-cart.png";
 import phone from "../../img/phone.png";
 import data from "../pages/ContactData";
+import { CartContext } from "../../ContextAPI/CartContext";
 import { itemCount, totalAmount } from "./AddToCart";
 
+//import { countCartItem } from "../../redux/actions/cart.action";
+
 const Nav = () => {
+  //const { countItem, total } = useContext(CartContext);
+  useContext(CartContext);
+  // const [itemValue] = countItem;
+  // const [totalPrice] = total;
+
+  // console.log("item value: ", itemValue);
+  // console.log("total  price: ", totalPrice);
+
+  //const dispatch = useDispatch();
+  //const cartCount = useSelector((state) => state.cart.cartItem);
+
+  useSelector((state) => state.cart.cartItem);
+
   return (
     <>
       {/* <!-- preloader area start --> */}
@@ -56,7 +73,7 @@ const Nav = () => {
               </button>
             </div>
             <div className="logo">
-              <Link className="main-logo" to="/homepage">
+              <Link className="main-logo" to="/">
                 <img src={logo} alt="img" height="40px" />
               </Link>
             </div>
@@ -122,7 +139,7 @@ const Nav = () => {
                 </li>
                 <li className="menu-cart">
                   <Link to="/cart">
-                    CART <span>1</span>
+                    CART <span>{itemCount()}</span>
                   </Link>
                 </li>
               </ul>
@@ -132,6 +149,8 @@ const Nav = () => {
                 <li className="menu-cart">
                   <Link to="/cart">
                     <img src={shoppingcart} alt="icon" />
+                    {/* <span>{itemValue}</span> */}
+                    {/* CART */}
                     <span>{itemCount()}</span>
                   </Link>
                 </li>

@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import BreadCrumb from "../common/BreadCrumb";
 import { Link } from "react-router-dom";
 
 import burger1 from "../../img/product/burger/1.png";
 import MenuListData from "./MenuListData";
-import { addItem } from "../common/AddToCart";
+import { itemCount, totalAmount } from "../common/AddToCart";
+import { CartContext } from "../../ContextAPI/CartContext";
+import { addToCart } from "./../../redux/actions/cart.action";
+import { useDispatch } from "react-redux";
 
 const MenuList = () => {
+  const { countItem, total } = useContext(CartContext);
+  const [, setItemValue] = countItem;
+  const [, setTotalPrice] = total;
+
+  // Hooks for pagination
+
+  // const [loading,setLoading] = useState(false);
+  // const [currentPage, setCurrentPage] = useState(1);
+  // const [postPerPage, setPostPerpage] = useState(10);
+
+  const dispatch = useDispatch();
+  function onAddToCart(product) {
+    // console.log(product);
+    dispatch(addToCart(product));
+  }
   return (
     <>
       <BreadCrumb name="Choose you items" description="Discoverour Menu" />
@@ -26,10 +44,10 @@ const MenuList = () => {
             </div>
           </div>
           <div className="row justify-content-center">
-            {MenuListData.map((curElem, index) => {
-              const { id, name, description, price, quantity } = curElem;
+            {MenuListData.map((curElem) => {
+              const { id, name, description, price } = curElem;
               return (
-                <div className="col-lg-6" key="index">
+                <div className="col-lg-6" key={id}>
                   <div className="single-item-wrap style-2">
                     <div className="media">
                       <div className="thumb">
@@ -46,7 +64,9 @@ const MenuList = () => {
                             type="submit"
                             className="btn btn-secondary"
                             onClick={() => {
-                              addItem(id, name, price, quantity);
+                              onAddToCart(curElem);
+                              setItemValue(itemCount());
+                              setTotalPrice(totalAmount());
                             }}
                           >
                             ADD TO CART
@@ -252,32 +272,32 @@ const MenuList = () => {
                 </div>
               </div>
             </div> */}
-            <div class="col-12">
+            <div className="col-12">
               <nav>
-                <ul class="pagination">
-                  <li class="page-item">
-                    <Link class="page-link" to="#">
-                      <i class="ri-arrow-left-s-line"></i>
+                <ul className="pagination">
+                  <li className="page-item">
+                    <Link className="page-link" to="#">
+                      <i className="ri-arrow-left-s-line"></i>
                     </Link>
                   </li>
-                  <li class="page-item active">
-                    <Link class="page-link" to="#">
+                  <li className="page-item active">
+                    <Link className="page-link" to="#">
                       1
                     </Link>
                   </li>
-                  <li class="page-item">
-                    <Link class="page-link" to="#">
+                  <li className="page-item">
+                    <Link className="page-link" to="#">
                       2
                     </Link>
                   </li>
-                  <li class="page-item">
-                    <Link class="page-link" to="#">
+                  <li className="page-item">
+                    <Link className="page-link" to="#">
                       3
                     </Link>
                   </li>
-                  <li class="page-item">
-                    <Link class="page-link" to="#">
-                      <i class="ri-arrow-right-s-line"></i>
+                  <li className="page-item">
+                    <Link className="page-link" to="#">
+                      <i className="ri-arrow-right-s-line"></i>
                     </Link>
                   </li>
                 </ul>

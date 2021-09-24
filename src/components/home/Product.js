@@ -1,4 +1,4 @@
-//import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import category1 from "../../img/category/1.png";
@@ -20,9 +20,13 @@ import product08 from "../../img/product/08.png";
 //product json data
 import ProductData from "./ProductData";
 import Items from "./Items";
-import { addItem } from "../common/AddToCart";
+import { addItem, itemCount, totalAmount } from "../common/AddToCart";
+import { CartContext } from "../../ContextAPI/CartContext";
 
 const Product = () => {
+  const { countItem, total } = useContext(CartContext);
+  const [, setItemValue] = countItem;
+  const [, setTotalPrice] = total;
   return (
     <>
       {/* <!-- product Area Start--> */}
@@ -205,6 +209,8 @@ const Product = () => {
                               className="btn btn-secondary"
                               onClick={() => {
                                 addItem(id, name, price, quantity);
+                                setItemValue(itemCount());
+                                setTotalPrice(totalAmount());
                               }}
                             >
                               Add to cart <i className="ri-add-line"></i>

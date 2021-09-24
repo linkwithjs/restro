@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import BreadCrumb from "./../components/common/BreadCrumb";
 import { Link } from "react-router-dom";
 import widget01 from "./../img/widget/01.png";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { total, list, quantity, remove } from "cart-localstorage";
+import Skeleton from "react-loading-skeleton";
+import { total, list, quantity } from "cart-localstorage";
+import { removeItem } from "../components/common/AddToCart";
 import getCart from "../redux/actions/cart.action";
 
 const Cart = () => {
@@ -15,13 +16,11 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cartItem);
   const loading = useSelector((state) => state.cart.isLoading);
-  const errors = useSelector((state) => state.cart.error);
+  //const errors = useSelector((state) => state.cart.error);
 
   useEffect(() => {
     dispatch(getCart());
-  }, [dispatch]);
-  console.log(cart);
-  console.log(cartItems);
+  }, [dispatch, amount]);
 
   return (
     <>
@@ -71,20 +70,17 @@ const Cart = () => {
                         </td>
 
                         <td>
-                          {" "}
                           <Skeleton count={1} height={40} width={50} />
                         </td>
 
                         <td className="table-quantity">
                           <form>
                             <div className="quantity buttons_added">
-                              {" "}
                               <Skeleton count={1} height={40} width={140} />
                             </div>
                           </form>
                         </td>
                         <td>
-                          {" "}
                           <Skeleton count={1} height={40} width={50} />
                         </td>
                       </tr>
@@ -97,7 +93,7 @@ const Cart = () => {
                                 <i
                                   className="ri-close-line"
                                   onClick={() => {
-                                    remove(curElem.id);
+                                    removeItem(curElem.id);
                                     setAmount(total());
                                   }}
                                 ></i>
